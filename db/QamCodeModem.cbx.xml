@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="QamCodeModem">
+		<CBX_INST_ENTRY INSTANCE_NAME="|QamCodeModem|CarrierModulator:u3|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]" CBX_FILE_NAME="add_sub_v5h.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|QamCodeModem|CarrierModulator:u3|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:booth_adder_right" CBX_FILE_NAME="add_sub_mpf.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|QamCodeModem|CarrierModulator:u3|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]" CBX_FILE_NAME="add_sub_v5h.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|QamCodeModem|CarrierModulator:u3|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder|lpm_add_sub:booth_adder_right" CBX_FILE_NAME="add_sub_mpf.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|QamCodeModem|CarrierModulator:u3|nco:nco_inst|nco_st:nco_st_inst|asj_dxx:ux002|lpm_add_sub:ux014" CBX_FILE_NAME="add_sub_qth.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|QamCodeModem|CarrierModulator:u3|nco:nco_inst|nco_st:nco_st_inst|asj_nco_as_m_cen:ux0121|altsyncram:altsyncram_component0" CBX_FILE_NAME="altsyncram_jt81.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|QamCodeModem|CarrierModulator:u3|nco:nco_inst|nco_st:nco_st_inst|asj_altqmcpipe:ux000|lpm_add_sub:acc" CBX_FILE_NAME="add_sub_05i.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|QamCodeModem|CarrierModulator:u3|nco:nco_inst|nco_st:nco_st_inst|asj_nco_as_m_cen:ux0120|altsyncram:altsyncram_component0" CBX_FILE_NAME="altsyncram_ot81.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|QamCodeModem|CarrierModulator:u3|nco:nco_inst|nco_st:nco_st_inst|asj_nco_isdr:ux710isdr|lpm_counter:lpm_counter_component" CBX_FILE_NAME="cntr_ori.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

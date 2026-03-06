@@ -1,0 +1,16 @@
+Fitter Status : Successful - Fri Mar 06 16:40:21 2026
+Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Full Version
+Revision Name : QamCodeModem
+Top-level Entity Name : QamCodeModem
+Family : Cyclone IV E
+Device : EP4CE15F17C8
+Timing Models : Final
+Total logic elements : 459 / 15,408 ( 3 % )
+    Total combinational functions : 375 / 15,408 ( 2 % )
+    Dedicated logic registers : 298 / 15,408 ( 2 % )
+Total registers : 298
+Total pins : 72 / 166 ( 43 % )
+Total virtual pins : 0
+Total memory bits : 68 / 516,096 ( < 1 % )
+Embedded Multiplier 9-bit elements : 0 / 112 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )

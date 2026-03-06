@@ -1,0 +1,43 @@
+Fri Mar 06 14:51:30 GMT+08:00 2026  [debug] AvalonLogSystem initialized using logfile 'velocity.log'
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] ************************************************************** 
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Starting Jakarta Velocity v1.4
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] RuntimeInstance initializing.
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Trying to use logger class org.apache.velocity.runtime.log.AvalonLogSystem
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Using logger class org.apache.velocity.runtime.log.AvalonLogSystem
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Resource Loader Instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] FileResourceLoader : initialization starting.
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] FileResourceLoader : adding path 'd:/quartus13.1/altera/ip/altera/nco/lib/\template'
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] FileResourceLoader : adding path '.'
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] FileResourceLoader : initialization complete.
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Resource Loader Instantiated: org.apache.velocity.runtime.resource.loader.JarResourceLoader
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] JarResourceLoader : initialization starting.
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] JarResourceLoader # of paths : 0
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] JarResourceLoader : initialization complete.
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Resource Loader Instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] ClasspathResourceLoader : initialization starting.
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] ClasspathResourceLoader : initialization complete.
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Default ResourceManager initialization complete.
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Created: 20 parsers.
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Velocimacro : initialization starting.
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Velocimacro : adding VMs from VM library template : VM_global_library.vm
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Velocimacro : added new VM : #listall( list ) : source = VM_global_library.vm
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Velocimacro : added new VM : #listlist( list ) : source = VM_global_library.vm
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] ResourceManager : found VM_global_library.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Velocimacro :  VM library template macro registration complete.
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Velocimacro : allowInline = true : VMs can be defined inline in templates
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Velocimacro : messages on  : VM system will output logging messages
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Velocimacro : autoload off  : VM system will not automatically reload global library macros
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Velocimacro : initialization complete.
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] Velocity successfully started.
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] ResourceManager : found nco_nativelink_tcl.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+Fri Mar 06 14:51:30 GMT+08:00 2026   [info] ResourceManager : found alt_license_tcl.txt with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader

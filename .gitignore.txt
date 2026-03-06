@@ -1,0 +1,17 @@
+# Quartus 自动生成的无用文件夹
+db/
+incremental_db/
+output_files/
+greybox_tmp/
+simulation/modelsim/
+
+# Quartus 编译报告和输出文件
+*.rpt
+*.summary
+*.done
+*.pin
+*.jdi
+*.sof
+*.pof
+*.qws
+*.smsg

@@ -1,0 +1,99 @@
+//这是CarrierModulator.v文件的程序清单
+//载波调制模块：基于复数思维的简化实现
+//复数表示：s_mod(t) = Re{(I + jQ) · e^(j2πfct)} = I·cos(2πfct) - Q·sin(2πfct)
+module CarrierModulator (
+	rst,clk,i,q,
+	mod_out,carrier_real,carrier_imag); 
+	
+	input		rst;        //复位信号，高电平有效
+	input		clk;        //FPGA系统时钟
+	input	 [2:0]	i;    //基带I支路数据（实部）
+	input	 [2:0]	q;    //基带Q支路数据（虚部）
+	output signed [15:0]	mod_out;      //调制输出信号（实部）
+	output signed [9:0]	carrier_real;  //载波实部（cos）
+	output signed [9:0]	carrier_imag;  //载波虚部（sin）
+
+	//===========================================
+	// 参数定义（匹配MATLAB参数）
+	//===========================================
+	// Fs = 8 MHz (采样频率)
+	// Rs = 1 MHz (符号速率)
+	// sps = 8 (每符号采样数)
+	// fc = 2 MHz (载波频率)
+	parameter PHASE_ACC_WIDTH = 32;  //相位累加器位宽
+	// 载波频率控制字计算：FCW = (fc / Fs) * 2^32
+	// FCW = (2MHz / 8MHz) * 4294967296 = 1073741824
+	parameter CARRIER_FREQ = 32'd1073741824;  //载波频率控制字（对应2MHz载波）
+	parameter LUT_ADDR_WIDTH = 10;   //查找表地址位宽
+	parameter LUT_DATA_WIDTH = 10;   //查找表数据位宽
+	
+	//===========================================
+	// NCO（数控振荡器）- 产生复数载波 e^(j2πfct)
+	//===========================================
+	reg [PHASE_ACC_WIDTH-1:0] phase_acc;  //相位累加器
+	
+	always @(posedge clk or posedge rst)
+		if (rst)
+			phase_acc <= {PHASE_ACC_WIDTH{1'b0}};
+		else
+			phase_acc <= phase_acc + CARRIER_FREQ;
+	
+	// 相位转角度（使用高10位）
+	wire [LUT_ADDR_WIDTH-1:0] phase_angle;
+	assign phase_angle = phase_acc[PHASE_ACC_WIDTH-1:PHASE_ACC_WIDTH-LUT_ADDR_WIDTH];
+	
+	//===========================================
+	// 复数载波查找表：e^(jθ) = cos(θ) + j·sin(θ)
+	//===========================================
+	reg signed [LUT_DATA_WIDTH-1:0] cos_table [0:1023];  //实部
+	reg signed [LUT_DATA_WIDTH-1:0] sin_table [0:1023];  //虚部
+	
+	// 初始化查找表
+	integer k;
+	initial begin
+		for (k=0; k<1024; k=k+1) begin
+			cos_table[k] = $cos(2*3.14159265*k/1024) * (2**(LUT_DATA_WIDTH-1)-1);
+			sin_table[k] = $sin(2*3.14159265*k/1024) * (2**(LUT_DATA_WIDTH-1)-1);
+		end
+	end
+	
+	// 载波输出
+	assign carrier_real = cos_table[phase_angle];  // cos(θ)
+	assign carrier_imag = sin_table[phase_angle];  // sin(θ)
+	
+	//===========================================
+	// 复数乘法：(I + jQ) · (cos + j·sin)
+	// 实部：I·cos - Q·sin
+	// 虚部：I·sin + Q·cos（本应用不需要）
+	//===========================================
+	
+	// I/Q数据扩展（3位 → 8位）
+	wire signed [7:0] i_ext;
+	wire signed [7:0] q_ext;
+	assign i_ext = {{5{i[2]}}, i, 2'b00};  //符号扩展 + 左移2位
+	assign q_ext = {{5{q[2]}}, q, 2'b00};
+	
+	// 复数乘法的实部：I·cos - Q·sin
+	wire signed [17:0] mult_i_cos;
+	wire signed [17:0] mult_q_sin;
+	
+	assign mult_i_cos = i_ext * carrier_real;  // I·cos
+	assign mult_q_sin = q_ext * carrier_imag;  // Q·sin
+	
+	wire signed [18:0] mod_result;
+	assign mod_result = mult_i_cos - mult_q_sin;  // 实部：I·cos - Q·sin
+	
+	//===========================================
+	// 输出寄存器
+	//===========================================
+	reg signed [15:0] mod_out_reg;
+	
+	always @(posedge clk or posedge rst)
+		if (rst)
+			mod_out_reg <= 16'sd0;
+		else
+			mod_out_reg <= mod_result[17:2];  //截取中间16位
+	
+	assign mod_out = mod_out_reg;
+	
+endmodule

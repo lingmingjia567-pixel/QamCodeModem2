@@ -1,0 +1,120 @@
+// Copyright (C) 1991-2012 Altera Corporation 
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details. 
+
+// ***************************************************************************** 
+// This file contains a Verilog test bench template that is freely editable to  
+// suit user's needs .Comments are provided in each section to help the user    
+// fill out necessary details.                                                   
+// ***************************************************************************** 
+// Generated on "10/31/2014 21:05:41" 
+                                                                                 
+// Verilog Test Bench template for design : QamCodeModem 
+// 
+// Simulation tool : ModelSim-Altera (Verilog) 
+// 
+
+`timescale 1 ns/ 1 ns 
+module QamCodeModem_vlg_tst(); 
+// constants                                            
+// general purpose registers 
+//reg eachvec; 
+// test vector input registers 
+reg clk; 
+reg [3:0] din; 
+reg rst; 
+// wires                                                
+wire [3:0]  dout; 
+wire [2:0]  i; 
+wire [2:0]  q; 
+wire [3:0]  code_out; // 差分编码后的code信号
+wire signed [15:0] mod_out;       // 载波调制输出信号
+wire signed [9:0]  carrier_real;  // 载波实部（cos）
+wire signed [9:0]  carrier_imag;  // 载波虚部（sin）
+// 调试信号
+wire [7:0]  i_filtered;  // 滤波后的I路数据
+wire [7:0]  q_filtered;  // 滤波后的Q路数据
+
+// assign statements (if any)                           
+QamCodeModem i1 ( 
+// port map - connection between master ports and signals/registers   
+	 .clk(clk), 
+	 .din(din), 
+	 .dout(dout), 
+	 .i(i), 
+	 .q(q), 
+	 .rst(rst),
+	 .code_out(code_out),         // 差分编码输出
+	 .mod_out(mod_out),           // 载波调制输出
+	 .carrier_real(carrier_real), // 载波实部
+	 .carrier_imag(carrier_imag)  // 载波虚部
+); 
+
+//===========================================
+// 参数定义（匹配MATLAB参数）
+//===========================================
+// Fs = 8 MHz (采样频率)
+// Rs = 1 MHz (符号速率)
+// sps = 8 (每符号采样数)
+// fc = 2 MHz (载波频率)
+parameter clk_period=125; // 时钟周期 = 1/8MHz = 125ns
+parameter cycles_per_data=8; // 每符号采样数 sps = 8
+parameter data_num=50000;  // 符号数 N_sym = 50000
+parameter time_sim=data_num*cycles_per_data*clk_period; //仿真时间
+parameter clk_half_period=clk_period/2;
+
+initial 
+begin 
+	//设置时钟信号初值 
+	clk=1; 
+	//设置复位信号 
+	rst=1; 
+	#400 rst=0; 
+	//设置仿真时间 
+	#time_sim $finish; 
+end 
+
+//产生时钟信号 
+always                                                 
+	#clk_half_period clk=~clk; 
+
+//从外部TX文件读入数据作为测试激励 
+integer Pattern; 
+integer Cycle;
+reg [3:0] stimulus[0:data_num-1];  // 从0开始索引，共data_num个元素 
+
+initial begin 
+    // 使用绝对路径读取二进制文件 
+    $readmemb("D:/Quartus13.1/altera/program/QamCodeModem/simulation/modelsim/QAM_o.txt", stimulus);
+    
+    // 等待复位完成
+    @(negedge rst);
+    #20; // 额外延迟确保复位完全释放
+    
+    // 显示并发送数据
+    for(Pattern=0; Pattern<data_num; Pattern=Pattern+1) begin 
+        // 使用%b显示二进制，显示所有数据
+        $display("Pattern %d: din=%b -> code=%b, I=%b, Q=%b, mod_out=%d", 
+                 Pattern, stimulus[Pattern], code_out, i, q, mod_out);
+        
+        // 将数据赋值给din
+        din = stimulus[Pattern];
+        
+        // 保持8个时钟周期
+        for(Cycle=0; Cycle<cycles_per_data; Cycle=Cycle+1) begin
+            @(posedge clk); // 等待时钟上升沿
+        end
+    end
+end 
+
+endmodule 

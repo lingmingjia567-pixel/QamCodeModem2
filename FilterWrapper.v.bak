@@ -1,0 +1,71 @@
+//这是FilterWrapper.v文件的程序清单
+//滤波器包装模块：处理I/Q信号的并行滤波
+module FilterWrapper (
+    rst, clk, i_in, q_in,
+    i_out, q_out
+); 
+    
+    input           rst;        //复位信号，高电平有效
+    input           clk;        //FPGA系统时钟
+    input   [2:0]   i_in;       //输入I支路数据
+    input   [2:0]   q_in;       //输入Q支路数据
+    output  [7:0]   i_out;      //输出滤波后的I支路数据
+    output  [7:0]   q_out;      //输出滤波后的Q支路数据
+
+    //===========================================
+    // 信号扩展：3位 → 10位（匹配滤波器输入位宽）
+    //===========================================
+    wire signed [9:0] i_ext;
+    wire signed [9:0] q_ext;
+    
+    assign i_ext = {{7{i_in[2]}}, i_in};  //符号扩展到10位
+    assign q_ext = {{7{q_in[2]}}, q_in};
+
+    //===========================================
+    // I路滤波器实例
+    //===========================================
+    wire signed [20:0] i_filtered;
+    wire i_valid, i_ready;
+    
+    filter i_filter (
+        .clk(clk),
+        .reset_n(!rst),  //注意：滤波器使用低电平复位
+        .ast_sink_data(i_ext),
+        .coef_set(1'b0),  //使用默认系数集
+        .ast_sink_valid(1'b1),  //始终有效
+        .ast_source_ready(1'b1),  //始终准备好接收
+        .ast_sink_error(2'b00),  //无错误
+        .ast_source_data(i_filtered),
+        .ast_sink_ready(i_ready),
+        .ast_source_valid(i_valid),
+        .ast_source_error()
+    );
+
+    //===========================================
+    // Q路滤波器实例
+    //===========================================
+    wire signed [20:0] q_filtered;
+    wire q_valid, q_ready;
+    
+    filter q_filter (
+        .clk(clk),
+        .reset_n(!rst),  //注意：滤波器使用低电平复位
+        .ast_sink_data(q_ext),
+        .coef_set(1'b0),  //使用默认系数集
+        .ast_sink_valid(1'b1),  //始终有效
+        .ast_source_ready(1'b1),  //始终准备好接收
+        .ast_sink_error(2'b00),  //无错误
+        .ast_source_data(q_filtered),
+        .ast_sink_ready(q_ready),
+        .ast_source_valid(q_valid),
+        .ast_source_error()
+    );
+
+    //===========================================
+    // 输出位宽调整：21位 → 8位
+    //===========================================
+    // 从滤波器输出中截取合适的位，保持符号
+    assign i_out = i_filtered[18:11];  //截取中间8位
+    assign q_out = q_filtered[18:11];  //截取中间8位
+
+endmodule

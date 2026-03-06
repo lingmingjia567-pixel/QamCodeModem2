@@ -1,0 +1,151 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\Quartus13.1\altera\program\QamCodeModem\simulation\modelsim
+vCarrierModulator
+IC3ia`8cb4j:RDM0I0_5n23
+VmQ[WSeC_k7LXM>=d6Y[>i1
+Z1 dD:\Quartus13.1\altera\program\QamCodeModem\simulation\modelsim
+w1772781263
+8D:/Quartus13.1/altera/program/QamCodeModem/CarrierModulator.v
+FD:/Quartus13.1/altera/program/QamCodeModem/CarrierModulator.v
+L0 4
+Z2 OV;L;10.1d;51
+r1
+31
+Z3 o-vlog01compat -work work -O0
+Z4 !s92 -vlog01compat -work work +incdir+D:/Quartus13.1/altera/program/QamCodeModem -O0
+n@carrier@modulator
+!i10b 1
+!s100 kQiAdhh7UHJfZDJb;=1fQ3
+!s85 0
+!s108 1772786489.708000
+!s107 D:/Quartus13.1/altera/program/QamCodeModem/CarrierModulator.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Quartus13.1/altera/program/QamCodeModem|D:/Quartus13.1/altera/program/QamCodeModem/CarrierModulator.v|
+!s101 -O0
+vCodeMap
+Ik9cC1XiVRM:dlHgRNnTlI1
+V1S<T6C3DZHVn;?X?T7AAR0
+R1
+w1772588801
+8D:/Quartus13.1/altera/program/QamCodeModem/CodeMap.v
+FD:/Quartus13.1/altera/program/QamCodeModem/CodeMap.v
+L0 2
+R2
+r1
+31
+R3
+R4
+n@code@map
+!i10b 1
+!s100 6Ca9I3^T0BbkJQcl4`zBY1
+!s85 0
+!s108 1772786489.603000
+!s107 D:/Quartus13.1/altera/program/QamCodeModem/CodeMap.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Quartus13.1/altera/program/QamCodeModem|D:/Quartus13.1/altera/program/QamCodeModem/CodeMap.v|
+!s101 -O0
+vDeCodeMap
+I0;SV31O`XoP^QFCEim?RN0
+Vj44EP>3mDfaN^[M@=C>MS3
+R1
+w1772588802
+8D:/Quartus13.1/altera/program/QamCodeModem/DeCodeMap.v
+FD:/Quartus13.1/altera/program/QamCodeModem/DeCodeMap.v
+L0 2
+R2
+r1
+31
+R3
+R4
+n@de@code@map
+!i10b 1
+!s100 9Y3hgeXC4md18RQQOzDTc2
+!s85 0
+!s108 1772786489.665000
+!s107 D:/Quartus13.1/altera/program/QamCodeModem/DeCodeMap.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Quartus13.1/altera/program/QamCodeModem|D:/Quartus13.1/altera/program/QamCodeModem/DeCodeMap.v|
+!s101 -O0
+vFilterWrapper
+IdOS5aoY]960NI2cCVnF9f3
+V7dazF@2=4FVHMTZ4QGfQU0
+R1
+w1772761385
+8D:/Quartus13.1/altera/program/QamCodeModem/FilterWrapper.v
+FD:/Quartus13.1/altera/program/QamCodeModem/FilterWrapper.v
+L0 3
+R2
+r1
+31
+R3
+R4
+n@filter@wrapper
+!i10b 1
+!s100 nZZIZnY^;7hABBJ>GIOoR0
+!s85 0
+!s108 1772786489.750000
+!s107 D:/Quartus13.1/altera/program/QamCodeModem/FilterWrapper.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Quartus13.1/altera/program/QamCodeModem|D:/Quartus13.1/altera/program/QamCodeModem/FilterWrapper.v|
+!s101 -O0
+vnco
+In65KgaMD6>N]ozDUK@<l?1
+VfnMmOEVCjJKP`k[7im`FX3
+R1
+w1772779899
+8D:/Quartus13.1/altera/program/QamCodeModem/nco.vo
+FD:/Quartus13.1/altera/program/QamCodeModem/nco.vo
+L0 31
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 516OnN7iQK5G9:9SAg_1O0
+!s85 0
+!s108 1772786489.492000
+!s107 D:/Quartus13.1/altera/program/QamCodeModem/nco.vo|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Quartus13.1/altera/program/QamCodeModem|D:/Quartus13.1/altera/program/QamCodeModem/nco.vo|
+!s101 -O0
+vQamCodeModem
+ICM]8CJfQIGFL7]60WM4NM0
+Vdi:a50H<5Kz3<gE:z5McT3
+R1
+w1772786410
+8D:/Quartus13.1/altera/program/QamCodeModem/QamCodeModem.v
+FD:/Quartus13.1/altera/program/QamCodeModem/QamCodeModem.v
+L0 3
+R2
+r1
+31
+R3
+R4
+n@qam@code@modem
+!i10b 1
+!s100 Obi:E[B^F]OJfUQI490P60
+!s85 0
+!s108 1772786489.558000
+!s107 D:/Quartus13.1/altera/program/QamCodeModem/QamCodeModem.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Quartus13.1/altera/program/QamCodeModem|D:/Quartus13.1/altera/program/QamCodeModem/QamCodeModem.v|
+!s101 -O0
+vQamCodeModem_vlg_tst
+!i10b 1
+!s100 hOeNKY6gBImN;VB:n>mIR2
+I0bGQlM6V3CaQM_8[Ohj:O1
+V2T4GM9e9DIXIk4;S0fbmO0
+R1
+w1772786412
+8D:/Quartus13.1/altera/program/QamCodeModem/simulation/modelsim/QamCodeModem.vt
+FD:/Quartus13.1/altera/program/QamCodeModem/simulation/modelsim/QamCodeModem.vt
+L0 28
+R2
+r1
+!s85 0
+31
+!s108 1772786489.796000
+!s107 D:/Quartus13.1/altera/program/QamCodeModem/simulation/modelsim/QamCodeModem.vt|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Quartus13.1/altera/program/QamCodeModem/simulation/modelsim|D:/Quartus13.1/altera/program/QamCodeModem/simulation/modelsim/QamCodeModem.vt|
+!s101 -O0
+R3
+!s92 -vlog01compat -work work +incdir+D:/Quartus13.1/altera/program/QamCodeModem/simulation/modelsim -O0
+n@qam@code@modem_vlg_tst
